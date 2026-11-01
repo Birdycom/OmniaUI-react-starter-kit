@@ -34,6 +34,15 @@ The official kit was converted with OmniaCSS's own tools, so you can do the same
 - Theme tokens live in `resources/css/theme.css`; every component follows light and dark mode through `light-dark()`.
 - `vite.config.ts` dedupes React, so the app and the OmniaUI components share one copy.
 
+## Icons
+
+The icons are the OmniaCSS webicons, drawn by the `iconify-icon` web component. These Iconify sets are installed:
+Material Design Icons (`mdi:`), MDI Light (`mdi-light:`), Material Symbols (`material-symbols:`), SVG Spinners
+(`svg-spinners:`), Flags (`flag:`) and VSCode Icons (`vscode-icons:`). Write `<Icon icon="mdi:cog-outline" />` (`resources/js/components/icon.tsx`) anywhere in
+`resources/`; `vite-icons.js` finds every `<set>:<name>` and bundles only those icons, so the app never calls the
+Iconify API. Size an icon with classes (`h-1 w-1`), the default is 1.25rem. Find names on
+https://omniaui.eu/ui/webicons.
+
 ## Components and Pro
 
 Import components from `@birdycom/omniaui-react` (145 of them: `Modal`, `Dropdown`, `DataTable`, `ChartLine` …) or add the

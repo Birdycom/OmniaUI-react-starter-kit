@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react';
 import type { PropsWithChildren } from 'react';
 import Heading from '@/components/heading';
+import { Icon } from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useCurrentUrl } from '@/hooks/use-current-url';
@@ -38,10 +39,10 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
                 description="Manage your profile and account settings"
             />
 
-            <div className="flex flex-col lg:flex-row lg:space-x-12">
-                <aside className="w-full max-w-xl lg:w-12">
+            <div className="lg:flex-row lg:space-x-12 flex flex-col">
+                <aside className="max-w-xl lg:w-12 w-full">
                     <nav
-                        className="flex flex-col space-y-1 space-x-0"
+                        className="space-y-1 space-x-0 flex flex-col"
                         aria-label="Settings"
                     >
                         {sidebarNavItems.map((item, index) => (
@@ -50,13 +51,18 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
                                 size="sm"
                                 variant="ghost"
                                 asChild
-                                className={cn('w-full justify-flex-start', {
-                                    'app-surface-muted': isCurrentOrParentUrl(item.href),
+                                className={cn('justify-flex-start w-full', {
+                                    'app-surface-muted': isCurrentOrParentUrl(
+                                        item.href,
+                                    ),
                                 })}
                             >
                                 <Link href={item.href}>
                                     {item.icon && (
-                                        <item.icon className="h-1 w-1" />
+                                        <Icon
+                                            icon={item.icon}
+                                            className="h-1 w-1"
+                                        />
                                     )}
                                     {item.title}
                                 </Link>
@@ -67,7 +73,7 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
 
                 <Separator className="m-block-1.5 lg:hidden" />
 
-                <div className="flex-1 md:max-w-2xl">
+                <div className="md:max-w-2xl flex-1">
                     <section className="max-w-xl space-y-12">
                         {children}
                     </section>

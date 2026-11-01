@@ -9,23 +9,23 @@ export default function AuthSimpleLayout({
     description,
 }: AuthLayoutProps) {
     return (
-        <div className="flex min-h-svh flex-col align-items-center justify-center gap-1.5 p-1.5 md:p-10">
-            <div className="w-full max-w-sm">
-                <div className="flex flex-col gap-2">
-                    <div className="flex flex-col align-items-center gap-1">
+        <div className="align-items-center gap-1.5 p-1.5 md:p-10 flex min-h-svh flex-col justify-center">
+            <div className="max-w-sm w-full">
+                <div className="gap-2 flex flex-col">
+                    <div className="align-items-center gap-1 flex flex-col">
                         <Link
                             href={home()}
-                            className="flex flex-col align-items-center gap-0.5 font-medium"
+                            className="align-items-center gap-0.5 font-medium flex flex-col"
                         >
-                            <div className="mb-0.2 flex h-2.2 w-2.2 align-items-center justify-center round-3">
-                                <AppLogoIcon className="size-9 fill-current text-[var(--foreground)] dark:text-white" />
+                            <div className="mb-0.2 h-2.2 w-2.2 align-items-center round-3 flex justify-center">
+                                <AppLogoIcon className="size-9 dark:text-white fill-current text-[var(--foreground)]" />
                             </div>
                             <span className="sr-only">{title}</span>
                         </Link>
 
                         <div className="space-y-2 text-center">
                             <h1 className="font-1.2 font-medium">{title}</h1>
-                            <p className="text-center font-0.8 app-fg-muted">
+                            <p className="font-0.8 app-fg-muted text-center">
                                 {description}
                             </p>
                         </div>

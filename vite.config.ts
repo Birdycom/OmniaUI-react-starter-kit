@@ -5,6 +5,7 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { bunny } from 'laravel-vite-plugin/fonts';
 import { defineConfig, lazyPlugins } from 'vite-plus';
+import omniaIcons from './vite-icons.js';
 
 export default defineConfig({
     plugins: lazyPlugins(() => [
@@ -17,6 +18,7 @@ export default defineConfig({
                 }),
             ],
         }),
+        omniaIcons(),
         inertia(),
         react(),
         babel({

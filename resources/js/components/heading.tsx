@@ -8,7 +8,9 @@ export default function Heading({
     variant?: 'default' | 'small';
 }) {
     return (
-        <header className={variant === 'small' ? '' : 'mb-2 flex flex-col gap-0.5'}>
+        <header
+            className={variant === 'small' ? '' : 'mb-2 gap-0.5 flex flex-col'}
+        >
             <h2
                 className={
                     variant === 'small'

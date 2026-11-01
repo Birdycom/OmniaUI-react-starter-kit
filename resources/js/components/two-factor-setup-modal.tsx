@@ -1,8 +1,8 @@
 import { Form } from '@inertiajs/react';
 import { REGEXP_ONLY_DIGITS } from '@/components/ui/input-otp';
-import { Check, Copy, ScanLine } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import AlertError from '@/components/alert-error';
+import { Icon } from '@/components/icon';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,25 +25,19 @@ import { confirm } from '@/routes/two-factor';
 
 function GridScanIcon() {
     return (
-        <div className="mb-0.7 round-full border  p-0.1 shadow-sm">
-            <div className="relative overflow-hidden round-full border app-surface-muted p-0.6">
-                <div className="absolute inset-0 grid grid-cols-5 opacity-50">
+        <div className="mb-0.7 round-full p-0.1 shadow-sm border">
+            <div className="round-full app-surface-muted p-0.6 relative overflow-hidden border">
+                <div className="inset-0 absolute grid grid-cols-5 opacity-50">
                     {Array.from({ length: 5 }, (_, i) => (
-                        <div
-                            key={`col-${i + 1}`}
-                            className="border-r"
-                        />
+                        <div key={`col-${i + 1}`} className="border-r" />
                     ))}
                 </div>
-                <div className="absolute inset-0 grid grid-rows-5 opacity-50">
+                <div className="inset-0 absolute grid grid-rows-5 opacity-50">
                     {Array.from({ length: 5 }, (_, i) => (
-                        <div
-                            key={`row-${i + 1}`}
-                            className="border-b"
-                        />
+                        <div key={`row-${i + 1}`} className="border-b" />
                     ))}
                 </div>
-                <ScanLine className="relative z-20 size-6 " />
+                <Icon icon="mdi:qrcode-scan" className="size-6 relative z-20" />
             </div>
         </div>
     );
@@ -64,7 +58,8 @@ function TwoFactorSetupStep({
 }) {
     const { resolvedAppearance } = useAppearance();
     const [copiedText, copy] = useClipboard();
-    const IconComponent = copiedText === manualSetupKey ? Check : Copy;
+    const copyIcon =
+        copiedText === manualSetupKey ? 'mdi:check' : 'mdi:content-copy';
 
     return (
         <>
@@ -72,12 +67,12 @@ function TwoFactorSetupStep({
                 <AlertError errors={errors} />
             ) : (
                 <>
-                    <div className="m-inline-auto flex max-w-md overflow-hidden">
-                        <div className="m-inline-auto aspect-1 w-16 rounded-lg border ">
-                            <div className="z-10 flex h-full w-full align-items-center justify-center p-1.2">
+                    <div className="m-inline-auto max-w-md flex overflow-hidden">
+                        <div className="m-inline-auto aspect-1 w-16 rounded-lg border">
+                            <div className="align-items-center p-1.2 z-10 flex h-full w-full justify-center">
                                 {qrCodeSvg ? (
                                     <div
-                                        className="aspect-1 w-full rounded-lg bg-white p-0.5"
+                                        className="aspect-1 rounded-lg bg-white p-0.5 w-full"
                                         dangerouslySetInnerHTML={{
                                             __html: qrCodeSvg,
                                         }}
@@ -95,23 +90,23 @@ function TwoFactorSetupStep({
                         </div>
                     </div>
 
-                    <div className="flex w-full space-x-5">
+                    <div className="space-x-5 flex w-full">
                         <Button className="w-full" onClick={onNextStep}>
                             {buttonText}
                         </Button>
                     </div>
 
-                    <div className="relative flex w-full align-items-center justify-center">
-                        <div className="absolute inset-0 top-1/2 h-px w-full" />
-                        <span className="relative p-inline-0.5 p-block-0.2">
+                    <div className="align-items-center relative flex w-full justify-center">
+                        <div className="inset-0 absolute top-1/2 h-px w-full" />
+                        <span className="p-inline-0.5 p-block-0.2 relative">
                             or, enter the code manually
                         </span>
                     </div>
 
-                    <div className="flex w-full space-x-2">
-                        <div className="flex w-full align-items-stretch overflow-hidden round-6 border ">
+                    <div className="space-x-2 flex w-full">
+                        <div className="align-items-stretch round-6 flex w-full overflow-hidden border">
                             {!manualSetupKey ? (
-                                <div className="flex h-full w-full align-items-center justify-center app-surface-muted p-0.7">
+                                <div className="align-items-center app-surface-muted p-0.7 flex h-full w-full justify-center">
                                     <Spinner />
                                 </div>
                             ) : (
@@ -120,13 +115,16 @@ function TwoFactorSetupStep({
                                         type="text"
                                         readOnly
                                         value={manualSetupKey}
-                                        className="h-full w-full  p-0.7 outline-none"
+                                        className="p-0.7 h-full w-full outline-none"
                                     />
                                     <button
                                         onClick={() => copy(manualSetupKey)}
-                                        className="border-l p-inline-0.7 app-surface-muted"
+                                        className="p-inline-0.7 app-surface-muted border-l"
                                     >
-                                        <IconComponent className="w-1" />
+                                        <Icon
+                                            icon={copyIcon}
+                                            className="h-1 w-1"
+                                        />
                                     </button>
                                 </>
                             )}
@@ -171,9 +169,9 @@ function TwoFactorVerificationStep({
                 <>
                     <div
                         ref={pinInputContainerRef}
-                        className="relative w-full space-y-3"
+                        className="space-y-3 relative w-full"
                     >
-                        <div className="flex w-full flex-col align-items-center space-y-3 p-block-0.5">
+                        <div className="align-items-center space-y-3 p-block-0.5 flex w-full flex-col">
                             <InputOTP
                                 id="otp"
                                 name="code"
@@ -202,7 +200,7 @@ function TwoFactorVerificationStep({
                             />
                         </div>
 
-                        <div className="flex w-full space-x-5">
+                        <div className="space-x-5 flex w-full">
                             <Button
                                 type="button"
                                 variant="outline"
@@ -325,7 +323,7 @@ export default function TwoFactorSetupModal({
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
             <DialogContent className="sm:max-w-md">
-                <DialogHeader className="flex flex-col align-items-center text-center gap-0.5">
+                <DialogHeader className="align-items-center gap-0.5 flex flex-col text-center">
                     <GridScanIcon />
                     <DialogTitle>{modalConfig.title}</DialogTitle>
                     <DialogDescription className="text-center">
@@ -333,7 +331,7 @@ export default function TwoFactorSetupModal({
                     </DialogDescription>
                 </DialogHeader>
 
-                <div className="flex flex-col align-items-center space-y-5">
+                <div className="align-items-center space-y-5 flex flex-col">
                     {showVerificationStep ? (
                         <TwoFactorVerificationStep
                             onClose={handleClose}

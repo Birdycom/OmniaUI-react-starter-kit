@@ -1,7 +1,7 @@
 import { Form } from '@inertiajs/react';
-import { Eye, EyeOff, LockKeyhole, RefreshCw } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import AlertError from '@/components/alert-error';
+import { Icon } from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import {
     Card,
@@ -50,13 +50,15 @@ export default function TwoFactorRecoveryCodes({
         }
     }, [recoveryCodesList.length, fetchRecoveryCodes]);
 
-    const RecoveryCodeIconComponent = codesAreVisible ? EyeOff : Eye;
+    const recoveryCodeIcon = codesAreVisible
+        ? 'mdi:eye-off-outline'
+        : 'mdi:eye-outline';
 
     return (
         <Card>
             <CardHeader>
-                <CardTitle className="flex gap-0.7">
-                    <LockKeyhole className="size-4" aria-hidden="true" />
+                <CardTitle className="gap-0.7 flex">
+                    <Icon icon="mdi:lock-outline" className="size-4" />
                     2FA recovery codes
                 </CardTitle>
                 <CardDescription>
@@ -65,14 +67,15 @@ export default function TwoFactorRecoveryCodes({
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <div className="flex flex-col gap-0.7 select-none sm:flex-row sm:align-items-center sm:justify-between">
+                <div className="gap-0.7 sm:flex-row sm:align-items-center sm:justify-between flex flex-col select-none">
                     <Button
                         onClick={toggleCodesVisibility}
                         className="w-fit"
                         aria-expanded={codesAreVisible}
                         aria-controls="recovery-codes-section"
                     >
-                        <RecoveryCodeIconComponent
+                        <Icon
+                            icon={recoveryCodeIcon}
                             className="size-4"
                             aria-hidden="true"
                         />
@@ -92,7 +95,11 @@ export default function TwoFactorRecoveryCodes({
                                     disabled={processing}
                                     aria-describedby="regenerate-warning"
                                 >
-                                    <RefreshCw /> Regenerate codes
+                                    <Icon
+                                        icon="mdi:refresh"
+                                        className="h-1 w-1"
+                                    />{' '}
+                                    Regenerate codes
                                 </Button>
                             )}
                         </Form>
@@ -110,7 +117,7 @@ export default function TwoFactorRecoveryCodes({
                             <>
                                 <div
                                     ref={codesSectionRef}
-                                    className="grid gap-0.2 rounded-lg app-surface-muted p-1 app-mono font-0.8"
+                                    className="gap-0.2 rounded-lg app-surface-muted p-1 app-mono font-0.8 grid"
                                     role="list"
                                     aria-label="Recovery codes"
                                 >

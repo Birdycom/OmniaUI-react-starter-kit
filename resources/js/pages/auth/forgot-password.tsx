@@ -1,6 +1,6 @@
 // Components
 import { Form, Head } from '@inertiajs/react';
-import { LoaderCircle } from 'lucide-react';
+import { Icon } from '@/components/icon';
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
@@ -15,7 +15,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
             <Head title="Forgot password" />
 
             {status && (
-                <div className="mb-1 text-center font-0.8 font-medium text-green-30">
+                <div className="mb-1 font-0.8 font-medium text-green-30 text-center">
                     {status}
                 </div>
             )}
@@ -24,7 +24,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                 <Form {...email.form()}>
                     {({ processing, errors }) => (
                         <>
-                            <div className="grid gap-0.5">
+                            <div className="gap-0.5 grid">
                                 <Label htmlFor="email">Email address</Label>
                                 <Input
                                     id="email"
@@ -38,14 +38,17 @@ export default function ForgotPassword({ status }: { status?: string }) {
                                 <InputError message={errors.email} />
                             </div>
 
-                            <div className="m-block-1.5 flex align-items-center justify-flex-start">
+                            <div className="m-block-1.5 align-items-center justify-flex-start flex">
                                 <Button
                                     className="w-full"
                                     disabled={processing}
                                     data-test="email-password-reset-link-button"
                                 >
                                     {processing && (
-                                        <LoaderCircle className="h-1 w-1 animate-spin" />
+                                        <Icon
+                                            icon="mdi:loading"
+                                            className="h-1 w-1 animate-spin"
+                                        />
                                     )}
                                     Email password reset link
                                 </Button>
@@ -54,7 +57,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     )}
                 </Form>
 
-                <div className="space-x-1 text-center font-0.8 app-fg-muted">
+                <div className="space-x-1 font-0.8 app-fg-muted text-center">
                     <span>Or, return to</span>
                     <TextLink href={login()}>log in</TextLink>
                 </div>

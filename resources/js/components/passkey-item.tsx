@@ -1,5 +1,5 @@
-import { KeyRound, Trash2 } from 'lucide-react';
 import { useState } from 'react';
+import { Icon } from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -26,18 +26,21 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
     };
 
     return (
-        <div className="flex align-items-center justify-between border-b p-1">
-            <div className="flex align-items-center gap-1">
-                <div className="flex h-2.5 w-2.5 noshrink align-items-center justify-center round-6 app-surface-muted">
-                    <KeyRound className="h-1.2 w-1.2 app-fg-muted" />
+        <div className="align-items-center p-1 flex justify-between border-b">
+            <div className="align-items-center gap-1 flex">
+                <div className="h-2.5 w-2.5 noshrink align-items-center round-6 app-surface-muted flex justify-center">
+                    <Icon
+                        icon="mdi:key-outline"
+                        className="h-1.2 w-1.2 app-fg-muted"
+                    />
                 </div>
                 <div className="space-y-1">
-                    <div className="flex align-items-center gap-0.6">
+                    <div className="align-items-center gap-0.6 flex">
                         <p className="font-medium letterspacing-1">
                             {passkey.name}
                         </p>
                         {passkey.authenticator && (
-                            <span className="inline-flex align-items-center gap-0.2 round-3 app-surface-muted p-inline-0.5 p-block-0.1 font-0.7 font-medium letterspacing-8 app-fg-muted uppercase">
+                            <span className="align-items-center gap-0.2 round-3 app-surface-muted p-inline-0.5 p-block-0.1 font-0.7 font-medium letterspacing-8 app-fg-muted inline-flex uppercase">
                                 {passkey.authenticator}
                             </span>
                         )}
@@ -63,7 +66,10 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
                         size="sm"
                         className="app-fg-danger app-fg-danger"
                     >
-                        <Trash2 className="h-1 w-1" />
+                        <Icon
+                            icon="mdi:trash-can-outline"
+                            className="h-1 w-1"
+                        />
                         <span className="sr-only">Remove</span>
                     </Button>
                 </DialogTrigger>
