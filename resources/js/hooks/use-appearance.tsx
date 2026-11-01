@@ -50,6 +50,13 @@ const applyTheme = (appearance: Appearance): void => {
 
     document.documentElement.classList.toggle('dark', isDark);
     document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+
+    // OmniaUI follows data-theme on <html>; without it, a dark OS wins over a chosen light theme.
+    if (appearance === 'system') {
+        delete document.documentElement.dataset.theme;
+    } else {
+        document.documentElement.dataset.theme = appearance;
+    }
 };
 
 const subscribe = (callback: () => void) => {

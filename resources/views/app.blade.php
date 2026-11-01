@@ -16,6 +16,11 @@
                         document.documentElement.classList.add('dark');
                     }
                 }
+
+                // OmniaUI follows data-theme on <html>: a chosen theme wins over the OS setting.
+                if (appearance === 'light' || appearance === 'dark') {
+                    document.documentElement.dataset.theme = appearance;
+                }
             })();
         </script>
 
