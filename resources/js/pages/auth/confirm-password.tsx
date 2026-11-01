@@ -33,7 +33,7 @@ export default function ConfirmPassword() {
             <Form {...store.form()} resetOnSuccess={['password']}>
                 {({ processing, errors }) => (
                     <div className="space-y-6">
-                        <div className="grid gap-0.5">
+                        <div className="gap-0.5 grid">
                             <Label htmlFor="password">Password</Label>
                             <PasswordInput
                                 id="password"
@@ -46,7 +46,7 @@ export default function ConfirmPassword() {
                             <InputError message={errors.password} />
                         </div>
 
-                        <div className="flex align-items-center">
+                        <div className="align-items-center flex">
                             <Button
                                 className="w-full"
                                 disabled={processing}

@@ -1,7 +1,7 @@
 import type { UrlMethodPair } from '@inertiajs/core';
 import { router } from '@inertiajs/react';
 import { usePasskeyVerify } from '@laravel/passkeys/react';
-import { KeyRound } from 'lucide-react';
+import { Icon } from '@/components/icon';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
@@ -40,7 +40,7 @@ export default function PasskeyVerify({
 
     return (
         <>
-            <div className="grid gap-0.5">
+            <div className="gap-0.5 grid">
                 <Button
                     type="button"
                     variant="outline"
@@ -48,7 +48,11 @@ export default function PasskeyVerify({
                     onClick={verify}
                     disabled={isLoading}
                 >
-                    {isLoading ? <Spinner /> : <KeyRound className="h-1 w-1" />}
+                    {isLoading ? (
+                        <Spinner />
+                    ) : (
+                        <Icon icon="mdi:key-outline" className="h-1 w-1" />
+                    )}
                     {isLoading
                         ? (loadingLabel ?? 'Authenticating...')
                         : (label ?? 'Sign in with a passkey')}

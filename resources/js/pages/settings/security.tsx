@@ -63,7 +63,7 @@ export default function Security(props: Props) {
                 >
                     {({ errors, processing }) => (
                         <>
-                            <div className="grid gap-0.5">
+                            <div className="gap-0.5 grid">
                                 <Label htmlFor="current_password">
                                     Current password
                                 </Label>
@@ -80,7 +80,7 @@ export default function Security(props: Props) {
                                 <InputError message={errors.current_password} />
                             </div>
 
-                            <div className="grid gap-0.5">
+                            <div className="gap-0.5 grid">
                                 <Label htmlFor="password">New password</Label>
 
                                 <PasswordInput
@@ -96,7 +96,7 @@ export default function Security(props: Props) {
                                 <InputError message={errors.password} />
                             </div>
 
-                            <div className="grid gap-0.5">
+                            <div className="gap-0.5 grid">
                                 <Label htmlFor="password_confirmation">
                                     Confirm password
                                 </Label>
@@ -115,7 +115,7 @@ export default function Security(props: Props) {
                                 />
                             </div>
 
-                            <div className="flex align-items-center gap-1">
+                            <div className="align-items-center gap-1 flex">
                                 <Button
                                     disabled={processing}
                                     data-test="update-password-button"

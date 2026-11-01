@@ -76,8 +76,8 @@ export default function TwoFactorChallenge() {
                                     />
                                 </>
                             ) : (
-                                <div className="flex flex-col align-items-center justify-center space-y-3 text-center">
-                                    <div className="flex w-full align-items-center justify-center">
+                                <div className="align-items-center space-y-3 flex flex-col justify-center text-center">
+                                    <div className="align-items-center flex w-full justify-center">
                                         <InputOTP
                                             name="code"
                                             maxLength={OTP_MAX_LENGTH}
@@ -112,11 +112,11 @@ export default function TwoFactorChallenge() {
                                 Continue
                             </Button>
 
-                            <div className="text-center font-0.8 app-fg-muted">
+                            <div className="font-0.8 app-fg-muted text-center">
                                 <span>or you can </span>
                                 <button
                                     type="button"
-                                    className="cursor-pointer underline underline-offset-4 transition-colors duration-300 ease-out"
+                                    className="ease-out cursor-pointer underline underline-offset-4 transition-colors duration-300"
                                     onClick={() =>
                                         toggleRecoveryMode(clearErrors)
                                     }

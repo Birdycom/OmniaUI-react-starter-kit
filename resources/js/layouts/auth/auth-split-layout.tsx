@@ -11,28 +11,28 @@ export default function AuthSplitLayout({
     const { name } = usePage().props;
 
     return (
-        <div className="relative grid h-dvh flex-col align-items-center justify-center p-inline-2 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div className="relative none h-full flex-col app-surface-muted p-2.5 text-white lg:flex dark:border-r">
-                <div className="absolute inset-0 bg-black-30" />
+        <div className="align-items-center p-inline-2 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0 relative grid h-dvh flex-col justify-center">
+            <div className="none app-surface-muted p-2.5 text-white lg:flex relative h-full flex-col dark:border-r">
+                <div className="inset-0 bg-black-30 absolute" />
                 <Link
                     href={home()}
-                    className="relative z-20 flex align-items-center font-1.1 font-medium"
+                    className="align-items-center font-1.1 font-medium relative z-20 flex"
                 >
-                    <AppLogoIcon className="mr-0.5 size-8 fill-current text-white" />
+                    <AppLogoIcon className="mr-0.5 size-8 text-white fill-current" />
                     {name}
                 </Link>
             </div>
-            <div className="w-full lg:p-2">
-                <div className="m-inline-auto flex w-full flex-col justify-center space-y-6">
+            <div className="lg:p-2 w-full">
+                <div className="m-inline-auto space-y-6 flex w-full flex-col justify-center">
                     <Link
                         href={home()}
-                        className="relative z-20 flex align-items-center justify-center lg:hidden"
+                        className="align-items-center lg:hidden relative z-20 flex justify-center"
                     >
-                        <AppLogoIcon className="h-2.5 fill-current text-black sm:h-12" />
+                        <AppLogoIcon className="h-2.5 text-black sm:h-12 fill-current" />
                     </Link>
-                    <div className="flex flex-col align-items-flex-start gap-0.5 text-left sm:align-items-center sm:text-center">
+                    <div className="align-items-flex-start gap-0.5 sm:align-items-center sm:text-center flex flex-col text-left">
                         <h1 className="font-1.2 font-medium">{title}</h1>
-                        <p className="font-0.8 text-balance app-fg-muted">
+                        <p className="font-0.8 app-fg-muted text-balance">
                             {description}
                         </p>
                     </div>

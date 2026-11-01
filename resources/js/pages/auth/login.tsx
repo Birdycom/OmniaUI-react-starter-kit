@@ -19,9 +19,10 @@ import PasskeyVerify from '@/components/passkey-verify';
 type Props = {
     status?: string;
     canResetPassword: boolean;
+    demo?: { email: string; password: string } | null;
 };
 
-export default function Login({ status, canResetPassword }: Props) {
+export default function Login({ status, canResetPassword, demo }: Props) {
     return (
         <>
             <Head title="Log in" />
@@ -33,12 +34,12 @@ export default function Login({ status, canResetPassword }: Props) {
             <Form
                 {...store.form()}
                 resetOnSuccess={['password']}
-                className="flex flex-col gap-1.5"
+                className="gap-1.5 flex flex-col"
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-1.5">
-                            <div className="grid gap-0.5">
+                        <div className="gap-1.5 grid">
+                            <div className="gap-0.5 grid">
                                 <Label htmlFor="email">Email address</Label>
                                 <Input
                                     id="email"
@@ -49,17 +50,18 @@ export default function Login({ status, canResetPassword }: Props) {
                                     tabIndex={1}
                                     autoComplete="email"
                                     placeholder="email@example.com"
+                                    defaultValue={demo?.email}
                                 />
                                 <InputError message={errors.email} />
                             </div>
 
-                            <div className="grid gap-0.5">
-                                <div className="flex align-items-center">
+                            <div className="gap-0.5 grid">
+                                <div className="align-items-center flex">
                                     <Label htmlFor="password">Password</Label>
                                     {canResetPassword && (
                                         <TextLink
                                             href={request()}
-                                            className="ml-auto font-0.8"
+                                            className="font-0.8 ml-auto"
                                             tabIndex={5}
                                         >
                                             Forgot your password?
@@ -73,11 +75,12 @@ export default function Login({ status, canResetPassword }: Props) {
                                     tabIndex={2}
                                     autoComplete="current-password"
                                     placeholder="Password"
+                                    defaultValue={demo?.password}
                                 />
                                 <InputError message={errors.password} />
                             </div>
 
-                            <div className="flex align-items-center space-x-3">
+                            <div className="align-items-center space-x-3 flex">
                                 <Checkbox
                                     id="remember"
                                     name="remember"
@@ -99,7 +102,7 @@ export default function Login({ status, canResetPassword }: Props) {
                         </div>
 
                         {/* @chisel-registration */}
-                        <div className="text-center font-0.8 app-fg-muted">
+                        <div className="font-0.8 app-fg-muted text-center">
                             Don't have an account?{' '}
                             <TextLink href={register()} tabIndex={5}>
                                 Sign up
@@ -111,7 +114,7 @@ export default function Login({ status, canResetPassword }: Props) {
             </Form>
 
             {status && (
-                <div className="mb-1 text-center font-0.8 font-medium text-green-30">
+                <div className="mb-1 font-0.8 font-medium text-green-30 text-center">
                     {status}
                 </div>
             )}

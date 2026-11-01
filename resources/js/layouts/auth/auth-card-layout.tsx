@@ -20,18 +20,18 @@ export default function AuthCardLayout({
     description?: string;
 }>) {
     return (
-        <div className="flex min-h-svh flex-col align-items-center justify-center gap-1.5 app-surface-muted p-1.5 md:p-10">
-            <div className="flex w-full max-w-md flex-col gap-1.5">
+        <div className="align-items-center gap-1.5 app-surface-muted p-1.5 md:p-10 flex min-h-svh flex-col justify-center">
+            <div className="max-w-md gap-1.5 flex w-full flex-col">
                 <Link
                     href={home()}
-                    className="flex align-items-center gap-0.5 align-self-center font-medium"
+                    className="align-items-center gap-0.5 align-self-center font-medium flex"
                 >
-                    <div className="flex h-2.2 w-2.2 align-items-center justify-center">
-                        <AppLogoIcon className="size-9 fill-current text-black dark:text-white" />
+                    <div className="h-2.2 w-2.2 align-items-center flex justify-center">
+                        <AppLogoIcon className="size-9 text-black dark:text-white fill-current" />
                     </div>
                 </Link>
 
-                <div className="flex flex-col gap-1.5">
+                <div className="gap-1.5 flex flex-col">
                     <Card className="round-6">
                         <CardHeader className="p-inline-2.5 pt-2 pb-0 text-center">
                             <CardTitle className="font-1.2">{title}</CardTitle>

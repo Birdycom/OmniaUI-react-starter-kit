@@ -26,7 +26,7 @@ export default function DeleteUser() {
                 title="Delete account"
                 description="Delete your account and all of its resources"
             />
-            <div className="space-y-4 rounded-lg border border-snow-60 bg-linen-20 p-1">
+            <div className="space-y-4 rounded-lg border-snow-60 bg-linen-20 p-1 border">
                 <div className="oc-alert oc-alert--danger">
                     <p className="font-medium">Warning</p>
                     <p className="font-0.8">
@@ -65,7 +65,7 @@ export default function DeleteUser() {
                         >
                             {({ resetAndClearErrors, processing, errors }) => (
                                 <>
-                                    <div className="grid gap-0.5">
+                                    <div className="gap-0.5 grid">
                                         <Label
                                             htmlFor="password"
                                             className="sr-only"

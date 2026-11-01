@@ -54,7 +54,7 @@ export default function Profile(
                 >
                     {({ processing, errors }) => (
                         <>
-                            <div className="grid gap-0.5">
+                            <div className="gap-0.5 grid">
                                 <Label htmlFor="name">Name</Label>
 
                                 <Input
@@ -73,7 +73,7 @@ export default function Profile(
                                 />
                             </div>
 
-                            <div className="grid gap-0.5">
+                            <div className="gap-0.5 grid">
                                 <Label htmlFor="email">Email address</Label>
 
                                 <Input
@@ -97,12 +97,12 @@ export default function Profile(
                             {mustVerifyEmail &&
                                 auth.user.email_verified_at === null && (
                                     <div>
-                                        <p className=" font-0.8 app-fg-muted">
+                                        <p className="font-0.8 app-fg-muted">
                                             Your email address is unverified.{' '}
                                             <Link
                                                 href={send()}
                                                 as="button"
-                                                className="underline underline-offset-4 transition-colors duration-300 ease-out"
+                                                className="ease-out underline underline-offset-4 transition-colors duration-300"
                                             >
                                                 Click here to re-send the
                                                 verification email.
@@ -120,7 +120,7 @@ export default function Profile(
                                 )}
                             {/* @end-chisel-email-verification */}
 
-                            <div className="flex align-items-center gap-1">
+                            <div className="align-items-center gap-1 flex">
                                 <Button
                                     disabled={processing}
                                     data-test="update-profile-button"

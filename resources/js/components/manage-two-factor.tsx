@@ -1,7 +1,7 @@
 import { Form } from '@inertiajs/react';
-import { ShieldCheck } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import Heading from '@/components/heading';
+import { Icon } from '@/components/icon';
 import TwoFactorRecoveryCodes from '@/components/two-factor-recovery-codes';
 import TwoFactorSetupModal from '@/components/two-factor-setup-modal';
 import { Button } from '@/components/ui/button';
@@ -52,7 +52,7 @@ export default function ManageTwoFactor(props: Props) {
                 description="Manage your two-factor authentication settings"
             />
             {twoFactorEnabled ? (
-                <div className="flex flex-col align-items-flex-start justify-flex-start space-y-4">
+                <div className="align-items-flex-start justify-flex-start space-y-4 flex flex-col">
                     <p className="font-0.8 app-fg-muted">
                         You will be prompted for a secure, random pin during
                         login, which you can retrieve from the TOTP-supported
@@ -80,7 +80,7 @@ export default function ManageTwoFactor(props: Props) {
                     />
                 </div>
             ) : (
-                <div className="flex flex-col align-items-flex-start justify-flex-start space-y-4">
+                <div className="align-items-flex-start justify-flex-start space-y-4 flex flex-col">
                     <p className="font-0.8 app-fg-muted">
                         When you enable two-factor authentication, you will be
                         prompted for a secure pin during login. This pin can be
@@ -91,7 +91,10 @@ export default function ManageTwoFactor(props: Props) {
                     <div>
                         {hasSetupData ? (
                             <Button onClick={() => setShowSetupModal(true)}>
-                                <ShieldCheck />
+                                <Icon
+                                    icon="mdi:shield-check-outline"
+                                    className="h-1 w-1"
+                                />
                                 Continue setup
                             </Button>
                         ) : (
