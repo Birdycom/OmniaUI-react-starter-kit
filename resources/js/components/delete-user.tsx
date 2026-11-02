@@ -20,18 +20,16 @@ export default function DeleteUser() {
     const passwordInput = useRef<HTMLInputElement>(null);
 
     return (
-        <div className="space-y-6">
+        <section className="app-danger-zone">
             <Heading
                 variant="small"
                 title="Delete account"
                 description="Delete your account and all of its resources"
             />
-            <div className="space-y-4 rounded-lg border-snow-60 bg-linen-20 p-1 border">
-                <div className="oc-alert oc-alert--danger">
-                    <p className="font-medium">Warning</p>
-                    <p className="font-0.8">
-                        Please proceed with caution, this cannot be undone.
-                    </p>
+            <div className="app-danger-box">
+                <div className="app-danger-box-text">
+                    <p className="app-danger-box-title">Warning</p>
+                    <p>Please proceed with caution, this cannot be undone.</p>
                 </div>
 
                 <Dialog>
@@ -115,6 +113,6 @@ export default function DeleteUser() {
                     </DialogContent>
                 </Dialog>
             </div>
-        </div>
+        </section>
     );
 }
