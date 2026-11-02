@@ -4,6 +4,7 @@ import type { Appearance } from '@/hooks/use-appearance';
 import { useAppearance } from '@/hooks/use-appearance';
 import { cn } from '@/lib/utils';
 
+/** Light / Dark / System as the OmniaUI segmented control (radio buttons, so arrow keys work). */
 export default function AppearanceToggleTab({
     className = '',
     ...props
@@ -18,26 +19,26 @@ export default function AppearanceToggleTab({
 
     return (
         <div
-            className={cn(
-                'gap-0.2 rounded-lg bg-linen-20 p-0.2 dark:bg-neutral-800 inline-flex',
-                className,
-            )}
+            className={cn('oc-segmented', className)}
+            role="radiogroup"
+            aria-label="Appearance"
             {...props}
         >
             {tabs.map(({ value, icon, label }) => (
-                <button
+                <label
                     key={value}
-                    onClick={() => updateAppearance(value)}
-                    className={cn(
-                        'align-items-center round-3 p-inline-0.8 p-block-0.3 flex transition-colors',
-                        appearance === value
-                            ? 'bg-white shadow-xs dark:bg-neutral-700 dark:text-neutral-100'
-                            : 'text-black-2 hover:bg-neutral-200/60 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-700/60',
-                    )}
+                    className="oc-segmented-item inline-flex align-items-center gap-0.5"
                 >
+                    <input
+                        type="radio"
+                        name="appearance"
+                        value={value}
+                        checked={appearance === value}
+                        onChange={() => updateAppearance(value)}
+                    />
                     <Icon icon={icon} className="h-1 w-1" />
-                    <span className="ml-0.3 font-0.8">{label}</span>
-                </button>
+                    {label}
+                </label>
             ))}
         </div>
     );
