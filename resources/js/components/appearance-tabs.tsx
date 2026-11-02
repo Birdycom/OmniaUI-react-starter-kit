@@ -27,7 +27,7 @@ export default function AppearanceToggleTab({
             {tabs.map(({ value, icon, label }) => (
                 <label
                     key={value}
-                    className="oc-segmented-item inline-flex align-items-center gap-0.5"
+                    className="oc-segmented-item align-items-center gap-0.5 inline-flex"
                 >
                     <input
                         type="radio"
