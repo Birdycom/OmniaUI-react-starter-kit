@@ -17,28 +17,28 @@ import { dashboard } from '@/routes';
 // rows and a table. Replace the sample numbers with your own data.
 const signups = [
     {
-        name: 'Ada Lovelace',
+        name: 'Customer 1',
         plan: 'Team',
         variant: 'success',
         state: 'Active',
         days: 0,
     },
     {
-        name: 'Alan Turing',
+        name: 'Customer 2',
         plan: 'Pro',
         variant: 'success',
         state: 'Active',
         days: 3,
     },
     {
-        name: 'Grace Hopper',
+        name: 'Customer 3',
         plan: 'Free',
         variant: 'warning',
         state: 'Trial',
         days: 6,
     },
     {
-        name: 'Linus Torvalds',
+        name: 'Customer 4',
         plan: 'Pro',
         variant: 'secondary',
         state: 'Invited',

@@ -168,12 +168,18 @@
         gap: 1rem;
         padding: 1rem;
         border-radius: 0.5rem;
-        background: var(--color-linen-20);
+        background: light-dark(
+            var(--color-linen-20),
+            color-mix(in oklch, var(--oc-destructive) 14%, var(--oc-background))
+        );
     }
     .app-danger-box-text {
         display: grid;
         gap: 0.5rem;
-        color: var(--color-red-60);
+        color: light-dark(
+            var(--color-red-60),
+            oklch(from var(--oc-destructive) max(l, 0.75) c h)
+        );
     }
     .app-danger-box-text p {
         margin: 0;
